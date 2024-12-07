@@ -4,30 +4,30 @@ using System.Linq;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using ProjectMaui;
 using ProjectMaui.Models;
 
-namespace ProjectMaui.Services
+public class ExerciseService
 {
-    class ExerciseService
+    HttpClient httpClient;
+
+    public ExerciseService()
     {
-        HttpClient httpClient;
-
-        public ExerciseService()
+        httpClient = new HttpClient
         {
-            httpClient = new HttpClient
-            {
-                BaseAddress = new Uri(Env.API_BASE_URL)
-            };
-            httpClient.DefaultRequestHeaders.Add("X-Api-Key", Env.API_KEY);
-        }
+            BaseAddress = new Uri(Env.API_BASE_URL)
+        };
+        httpClient.DefaultRequestHeaders.Add("X-Api-Key", Env.API_KEY);
+    }
 
-        public async Task<List<Exercise>> GetExercise(string muscle)
-        {
-            if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
-                throw new InvalidOperationException("No internet connection.");
+    public async Task<List<Exercise>> GetExercise() //GetExercise(string muscle)
+    {
+        if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+            throw new InvalidOperationException("No internet connection.");
 
-            var response = await httpClient.GetFromJsonAsync<List<Exercise>>($"exercises?muscle={muscle}");
-            return response ?? new List<Exercise>();
-        }
+        var response = await httpClient.GetFromJsonAsync<List<Exercise>>($"exercises?muscle=biceps"); //($"exercises?muscle={muscle}");
+        return response ?? new List<Exercise>();
     }
 }
+}
+

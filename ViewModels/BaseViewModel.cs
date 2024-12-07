@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ProjectMaui.ViewModels
 {
-    // includes shared properties for all other models (title, app busy status) 
+    // includes shared properties for all other models (page title, app busy status) 
     public partial class BaseViewModel : ObservableObject
     {
         public BaseViewModel() { }
@@ -18,6 +18,6 @@ namespace ProjectMaui.ViewModels
         [ObservableProperty]
         string title;
 
-        public bool IsNotBusy => !IsBusy;
+        public bool IsNotBusy => !IsBusy; //toggle
     }
 }
