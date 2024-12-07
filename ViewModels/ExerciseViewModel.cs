@@ -1,4 +1,4 @@
-﻿using ProjectMaui.Services;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using ProjectMaui.Models;
 using ProjectMaui.Views;
 using ProjectMaui.ViewModels;
-using ProjectMaui.Services;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 using Microsoft.Maui.Devices.Sensors;

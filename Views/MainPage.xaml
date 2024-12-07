@@ -2,11 +2,62 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ProjectMaui.Views.MainPage"
-             Title="MainPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+             xmlns:model="clr-namespace:ProjectMaui.Models"
+             xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
+             x:DataType="viewModel:ExerciseViewModel"
+             Title="{Binding Title}">
+    
+    <Grid ColumnDefinitions="*,*"
+          ColumnSpacing="5" RowDefinitions="*,100" RowSpacing="0">
+        <CollectionView BackgroundColor="pink" Grid.ColumnSpan="2" 
+                        ItemsSource="{Binding Exercises}"
+                        SelectionMode="None">
+            
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="Center" 
+                             HorizontalOptions="Center"
+                             WidthRequest="200"
+                             HeightRequest="200">
+                    <Image Source="nodata.png" 
+                           HorizontalOptions="CenterAndExpand"
+                           VerticalOptions="CenterAndExpand"
+                           Aspect="AspectFill"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Exercise">
+                    <Grid Padding="10">
+                        <Frame HeightRequest="125" Padding="0">
+                            <!--<Label Text="{Binding Name}"/>-->
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=GoToDetailsCommand}"/>
+                            </Frame.GestureRecognizers>
+
+                            <Grid Padding="0" 
+                                  ColumnDefinitions="125,*">
+                              
+                                <VerticalStackLayout Grid.Column="1"
+                                                     Padding="10"
+                                                     VerticalOptions="Center">
+                                    <Label Text="{Binding name}"/>
+                                    <Label Text="{Binding type}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        <Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding LoadExercisesCommand}" IsEnabled="{Binding IsNotBusy}"/>
+       
+        <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"
+                               HorizontalOptions="FillAndExpand"
+                               VerticalOptions="CenterAndExpand"
+                               Grid.RowSpan="2"
+                               Grid.ColumnSpan="2"/>
+
+    </Grid>
 </ContentPage>
