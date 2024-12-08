@@ -4,7 +4,8 @@
              x:Class="ProjectMaui.Views.MainPage"
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
-             x:DataType="viewModel:ExerciseViewModel"
+             x:DataType="viewModel:ExerciseViewModel"          
+             
              Title="{Binding Title}">
 
 
@@ -20,29 +21,30 @@
                     <Entry x:Name="nameEntryField" Placeholder="Name"/>
                     <Entry x:Name="emailEntryField" Placeholder="Email"/>
                     <Entry x:Name="mobileEntryField" Placeholder="Mobile"/>
-                    <Button x:Name="saveButton" Text="Save" Clicked="saveButonClicked"/>
-                </VerticalStackLayout>
-                <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listViewItemTapped">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <VerticalStackLayout Padding="5">
-                                    <Label Text="{Binding ClientName}" FontSize="17" FontAttributes="Bold"/>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                            <ColumnDefinition Width="Auto"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Label Grid.Column="0" Text="{Binding Email}"/>
-                                        <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
+                    <Button x:Name="saveButton" Text="Save" Clicked="saveButtonClicked"/>
+                
+                    <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listViewItemTapped">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="model:Client">
+                                <ViewCell>
+                                    <VerticalStackLayout Padding="5">
+                                        <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto"/>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <Label Grid.Column="0" Text="{Binding Email}"/>
+                                            <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
                                         
-                                    </Grid>
-                                </VerticalStackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                                        </Grid>
+                                    </VerticalStackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </VerticalStackLayout>
             </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>
