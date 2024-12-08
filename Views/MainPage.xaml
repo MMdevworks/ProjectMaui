@@ -9,21 +9,9 @@
     
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5" RowDefinitions="*,100" RowSpacing="0">
-        <CollectionView BackgroundColor="pink" Grid.ColumnSpan="2" 
+        <CollectionView BackgroundColor="MidnightBlue" Grid.ColumnSpan="2" 
                         ItemsSource="{Binding Exercises}"
                         SelectionMode="None">
-            
-            <CollectionView.EmptyView>
-                <StackLayout VerticalOptions="Center" 
-                             HorizontalOptions="Center"
-                             WidthRequest="200"
-                             HeightRequest="200">
-                    <Image Source="nodata.png" 
-                           HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="CenterAndExpand"
-                           Aspect="AspectFill"/>
-                </StackLayout>
-            </CollectionView.EmptyView>
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Exercise">

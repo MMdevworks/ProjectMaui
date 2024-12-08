@@ -29,5 +29,5 @@ public class ExerciseService
         return response ?? new List<Exercise>();
     }
 }
-}
+
 
