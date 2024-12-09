@@ -12,15 +12,15 @@
 
     <Grid ColumnDefinitions="*,*"
           ColumnSpacing="5" RowDefinitions="*,100" RowSpacing="0">
-        <CollectionView BackgroundColor="pink" Grid.ColumnSpan="2" 
+        <CollectionView BackgroundColor="white" Grid.ColumnSpan="2" 
                         ItemsSource="{Binding Exercises}"
                         SelectionMode="None">
             
             <CollectionView.EmptyView>
-                <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="Bisque">
-                    <Entry x:Name="nameEntryField" Placeholder="Name"/>
-                    <Entry x:Name="emailEntryField" Placeholder="Email"/>
-                    <Entry x:Name="mobileEntryField" Placeholder="Mobile"/>
+                <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray">
+                    <Entry x:Name="nameEntryField" Placeholder="Name" BackgroundColor="White"/>
+                    <Entry x:Name="emailEntryField" Placeholder="Email" BackgroundColor="White"/>
+                    <Entry x:Name="mobileEntryField" Placeholder="Mobile" BackgroundColor="White"/>
                     <Button x:Name="saveButton" Text="Save" Clicked="saveButtonClicked"/>
                 
                     <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listViewItemTapped">
@@ -50,11 +50,11 @@
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Exercise">
                     <Grid Padding="10">
-                        <Frame HeightRequest="125" Padding="0">
-                            <!--<Label Text="{Binding Name}"/>-->
+                        <Frame HeightRequest="125" Padding="0" InputTransparent="True">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=GoToDetailsCommand}"/>
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=GoToDetailsCommand}"
+                                                      Tapped="DebugOnFrameTapped"/>
                             </Frame.GestureRecognizers>
 
                             <Grid Padding="0" 

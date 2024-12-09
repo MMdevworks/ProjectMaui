@@ -2,6 +2,7 @@
 using ProjectMaui.Services;
 using ProjectMaui.ViewModels;
 using ProjectMaui.Views;
+using CommunityToolkit.Maui;
 
 namespace ProjectMaui
 {
@@ -12,6 +13,8 @@ namespace ProjectMaui
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                //integrates the CommunityToolkit for MAUI into your app, enabling functionalities like animations, behaviors, etc.
+                .UseMauiCommunityToolkit()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");

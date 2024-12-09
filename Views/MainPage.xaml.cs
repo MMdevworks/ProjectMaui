@@ -70,5 +70,9 @@ public partial class MainPage : ContentPage
 
         }
 	}
-		
+
+    private void DebugOnFrameTapped(object sender, EventArgs e)
+    {
+        Console.WriteLine("Frame tapped");
+    }
 }
