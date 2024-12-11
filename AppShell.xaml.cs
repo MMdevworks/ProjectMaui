@@ -8,6 +8,8 @@ namespace ProjectMaui
         {
             InitializeComponent();
             Routing.RegisterRoute(nameof(ExerciseDetailsPage), typeof(ExerciseDetailsPage));
+            Routing.RegisterRoute(nameof(SplashPage), typeof(SplashPage));
+            Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
         }
     }
 }
