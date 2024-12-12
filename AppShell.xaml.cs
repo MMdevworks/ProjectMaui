@@ -7,9 +7,10 @@ namespace ProjectMaui
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ExerciseDetailsPage), typeof(ExerciseDetailsPage));
-            Routing.RegisterRoute(nameof(SplashPage), typeof(SplashPage));
+            //Routing.RegisterRoute(nameof(SplashPage), typeof(SplashPage));
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
+            Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
+            Routing.RegisterRoute(nameof(ExerciseDetailsPage), typeof(ExerciseDetailsPage));
         }
     }
 }
