@@ -6,11 +6,11 @@ public partial class SplashPage : ContentPage
 	{
 		InitializeComponent();
 	}
-
+	// fade splash and goto login
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
-		await this.FadeTo(0, 5000);
-		await Shell.Current.GoToAsync(nameof(LoginPage));
+		//await this.FadeTo(0, 2000);
+		await Shell.Current.GoToAsync(nameof(LoginPage), false);
 	}
 }
