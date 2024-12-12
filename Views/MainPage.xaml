@@ -65,6 +65,7 @@
                                                      VerticalOptions="Center">
                                     <Label Text="{Binding name}"/>
                                     <Label Text="{Binding type}"/>
+                                   
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>
@@ -72,8 +73,13 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-        <Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding LoadExercisesCommand}" IsEnabled="{Binding IsNotBusy}"/>
-       
+        <!--<Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding LoadExercisesCommand}" IsEnabled="{Binding IsNotBusy}"/>-->
+        <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
+                            ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=MuscleList}" 
+                            SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Muscle}" />
+        <Button Text="Search" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Margin="8" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=LoadExercisesCommand}"
+IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=IsNotBusy}" />
+
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                                IsRunning="{Binding IsBusy}"
                                HorizontalOptions="FillAndExpand"
