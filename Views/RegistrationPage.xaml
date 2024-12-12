@@ -4,11 +4,13 @@
              x:Class="ProjectMaui.Views.RegistrationPage"
              Title="Registration">
 
-    <ContentPage.GestureRecognizers>
-        <SwipeGestureRecognizer Direction="Right" Swiped="OnSwipeBack" />
-    </ContentPage.GestureRecognizers>
-    
     <StackLayout Padding="20">
+
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="OnSwipeBack"/>
+            </StackLayout.GestureRecognizers>
+          
+    
         <Label Text="Register" FontSize="24" HorizontalOptions="Center" />
 
         <Entry x:Name="UsernameEntry" Placeholder="Username" />

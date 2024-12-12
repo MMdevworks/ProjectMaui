@@ -11,7 +11,20 @@ public partial class LoginPage : ContentPage
         string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "users_local_db.db3");
         dbconnection = new SQLiteConnection(dbPath);
         dbconnection.CreateTable<User>();
+
+        //AddTestUser();
 	}
+    
+    //private void AddTestUser()
+    //{
+    //    var hashedPassword = BCrypt.Net.BCrypt.HashPassword("password");
+    //    var testUser = new User
+    //    {
+    //        Username = "tester",
+    //        Password = hashedPassword
+    //    };
+    //    dbconnection.Insert(testUser);
+    //}
 
     // Login show next page, else show fail
     private async void OnLoginClicked(object sender, EventArgs e)

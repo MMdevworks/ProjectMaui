@@ -7,8 +7,15 @@ public partial class RegistrationPage : ContentPage
 		InitializeComponent();
 	}
 
-	//private void OnRegisterClicked()
-	//{
-	//	Console.WriteLine("register clicked");
-	//}
+    //private void OnRegisterClicked()
+    //{
+    //	Console.WriteLine("register clicked");
+    //}
+
+    //go back swipe
+    private async void OnSwipeBack(object sender, EventArgs e)
+    {
+        //await this.TranslateTo(-this.Width, 0, 500, Easing.CubicOut);
+        await Shell.Current.GoToAsync("///LoginPage");
+    }
 }
