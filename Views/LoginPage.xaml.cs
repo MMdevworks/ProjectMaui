@@ -1,5 +1,4 @@
 namespace ProjectMaui.Views;
-
 using ProjectMaui.Models;
 using SQLite;
 public partial class LoginPage : ContentPage
@@ -14,7 +13,8 @@ public partial class LoginPage : ContentPage
 
         //AddTestUser();
 	}
-    
+
+    #region Test User
     //private void AddTestUser()
     //{
     //    var hashedPassword = BCrypt.Net.BCrypt.HashPassword("password");
@@ -24,9 +24,10 @@ public partial class LoginPage : ContentPage
     //        Password = hashedPassword
     //    };
     //    dbconnection.Insert(testUser);
-    //}
+    //} 
+    #endregion
 
-    // Login show next page, else show fail
+    // take bindings from front end and handle validation
     private async void OnLoginClicked(object sender, EventArgs e)
     {
         var username = UsernameEntry.Text?.Trim();
@@ -38,6 +39,7 @@ public partial class LoginPage : ContentPage
             ErrorMessageLabel.IsVisible = true;
             return;
         }
+
         var user = dbconnection.Table<User>().FirstOrDefault(u => u.Username == username);
         if (user != null && BCrypt.Net.BCrypt.Verify(password, user.Password))
         {

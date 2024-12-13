@@ -21,13 +21,14 @@ namespace ProjectMaui
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 #if DEBUG
-    		builder.Logging.AddDebug();
+            // register items that will use dependency injection
+            builder.Logging.AddDebug();
             builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<LocalDbService>();
             builder.Services.AddSingleton<ExerciseService>();
             builder.Services.AddSingleton<ExerciseViewModel>();
-            builder.Services.AddTransient<ExerciseDetailsView>();
+            builder.Services.AddTransient<ExerciseDetailsViewModel>();
             builder.Services.AddTransient<ExerciseDetailsPage>();
 #endif
 

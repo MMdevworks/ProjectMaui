@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjectMaui.ViewModels
 {
-    public partial class ExerciseDetailsView : BaseViewModel
+    internal class ExerciseDetailsViewModel
     {
     }
 }

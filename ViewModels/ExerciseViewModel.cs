@@ -23,9 +23,19 @@ namespace ProjectMaui.ViewModels
         IConnectivity connectivity;
         [ObservableProperty]
         private string muscle;
-        public List<string> MuscleList { get; } = new List<string> { "biceps", "triceps", "legs", "back" };
+        public List<string> MuscleList { get; } = new List<string> { "abdominals", "abductors", "adductors", "biceps", "calves", "chest", "forearms", "glutes", "hamstrings", "lats", "lower_back", "middle_back", "neck", "quadriceps", "traps", "triceps" };
 
-
+        public List<string> FormattedMuscleList
+        {
+            get
+            {
+                return GetFormattedMuscleList();
+            }
+        }
+        public List<string> GetFormattedMuscleList()
+        {
+            return MuscleList.Select(m => m.Replace('_', ' ').ToUpper()).ToList();
+        }
         // dependency constructor injection, injecting service, and connectivity
         // when an instance of ExerciseViewModel is created we will get objects of the injected services
         public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)
@@ -48,11 +58,15 @@ namespace ProjectMaui.ViewModels
             {
                 if (connectivity.NetworkAccess != NetworkAccess.Internet)
                 {
-                    await Shell.Current.DisplayAlert("Internet issue", $"Check your interntet", "Ok");
+                    await Shell.Current.DisplayAlert("Internet issue", "Check your interntet", "Ok");
                     return;
                 }
                 IsBusy = true;
-                var exercises = await exerciseService.GetExercise(Muscle);
+
+                Exercises.Clear();
+                
+                string formattedMuscle = Muscle.Replace(" ", "_").ToLower();
+                var exercises = await exerciseService.GetExercise(formattedMuscle);
                 foreach (var exercise in exercises)
                     Exercises.Add(exercise);
             }

@@ -10,7 +10,9 @@ Packages:
     CommunityToolkit.Maui
     SQLite-net-pcl
     SQLitePCLRaw.bundle_green
+    BCrypt
 
-
+Postman
+ApiNinjas
 ```
 
