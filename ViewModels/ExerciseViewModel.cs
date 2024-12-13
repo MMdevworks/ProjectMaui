@@ -11,6 +11,7 @@ using ProjectMaui.ViewModels;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
 using Microsoft.Maui.Devices.Sensors;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ProjectMaui.ViewModels
 {
@@ -20,7 +21,21 @@ namespace ProjectMaui.ViewModels
         public ObservableCollection<Exercise> Exercises { get; } = new();
 
         IConnectivity connectivity;
+        [ObservableProperty]
+        private string muscle;
+        public List<string> MuscleList { get; } = new List<string> { "abdominals", "abductors", "adductors", "biceps", "calves", "chest", "forearms", "glutes", "hamstrings", "lats", "lower_back", "middle_back", "neck", "quadriceps", "traps", "triceps" };
 
+        public List<string> FormattedMuscleList
+        {
+            get
+            {
+                return GetFormattedMuscleList();
+            }
+        }
+        public List<string> GetFormattedMuscleList()
+        {
+            return MuscleList.Select(m => m.Replace('_', ' ').ToUpper()).ToList();
+        }
         // dependency constructor injection, injecting service, and connectivity
         // when an instance of ExerciseViewModel is created we will get objects of the injected services
         public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)
@@ -30,19 +45,28 @@ namespace ProjectMaui.ViewModels
             this.connectivity = connectivity;
         }
 
-        [RelayCommand]
+        partial void OnMuscleChanged(string value)
+        {
+            LoadExercisesCommand.Execute(null);
+        }
+
+        [RelayCommand] //[RelayCommand] attribute to a method, it automatically generates a command for that method ie LoadExerciseCommand
         async Task LoadExercisesAsync()
         {
-            if (IsBusy) return;
+            if (IsBusy || string.IsNullOrWhiteSpace(Muscle)) return;
             try
             {
                 if (connectivity.NetworkAccess != NetworkAccess.Internet)
                 {
-                    await Shell.Current.DisplayAlert("Internet issue", $"Check your interntet", "Ok");
+                    await Shell.Current.DisplayAlert("Internet issue", "Check your interntet", "Ok");
                     return;
                 }
                 IsBusy = true;
-                var exercises = await exerciseService.GetExercise();
+
+                Exercises.Clear();
+                
+                string formattedMuscle = Muscle.Replace(" ", "_").ToLower();
+                var exercises = await exerciseService.GetExercise(formattedMuscle);
                 foreach (var exercise in exercises)
                     Exercises.Add(exercise);
             }

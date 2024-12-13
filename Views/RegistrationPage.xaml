@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectMaui.Views.RegistrationPage"
+             Title="Registration">
+
+    <StackLayout Padding="20">
+
+            <StackLayout.GestureRecognizers>
+                <SwipeGestureRecognizer Direction="Right" Swiped="OnSwipeBack"/>
+            </StackLayout.GestureRecognizers>
+          
+    
+        <Label Text="Register" FontSize="24" HorizontalOptions="Center" />
+
+        <Entry x:Name="UsernameEntry" Placeholder="Username" />
+        <Entry x:Name="PasswordEntry" Placeholder="Password" IsPassword="True" />
+        <Entry x:Name="ConfirmPasswordEntry" Placeholder="Confirm Password" IsPassword="True" />
+
+        <Picker x:Name="RolePicker" Title="Select Role">
+            <Picker.Items>
+                <x:String>Admin</x:String>
+                <x:String>User</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <!--<Button Text="Register" Clicked="OnRegisterClicked" />-->
+    </StackLayout>
+</ContentPage>

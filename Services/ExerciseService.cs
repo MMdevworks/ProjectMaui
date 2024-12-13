@@ -20,12 +20,12 @@ public class ExerciseService
         httpClient.DefaultRequestHeaders.Add("X-Api-Key", Env.API_KEY);
     }
 
-    public async Task<List<Exercise>> GetExercise() //GetExercise(string muscle)
+    public async Task<List<Exercise>> GetExercise(string muscle) 
     {
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
             throw new InvalidOperationException("No internet connection.");
 
-        var response = await httpClient.GetFromJsonAsync<List<Exercise>>($"exercises?muscle=biceps"); //($"exercises?muscle={muscle}");
+        var response = await httpClient.GetFromJsonAsync<List<Exercise>>($"exercises?muscle={muscle}"); //($"exercises?muscle={muscle}");
         return response ?? new List<Exercise>();
     }
 }
