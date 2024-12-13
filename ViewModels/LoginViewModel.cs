@@ -48,7 +48,33 @@ namespace ProjectMaui.ViewModels
         //} 
         #endregion
 
+        private async Task OnLoginAsync()
+        {
+            //var username = UsernameEntry.Text?.Trim();
+            //var password = PasswordEntry.Text?.Trim();
 
+            if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
+            {
+                ErrorMessage = "Please enter a username and password.";
+                return;
+            }
+
+            var user = dbconnection.Table<User>().FirstOrDefault(u => u.Username == Username);
+            if (user != null && BCrypt.Net.BCrypt.Verify(Password, user.Password))
+            {
+
+                ErrorMessage = string.Empty;
+                await Shell.Current.GoToAsync("///MainPage");
+            }
+            else
+            {
+                ErrorMessage = "Invalid username or password.";
+            }
+        }
+
+        private async Task OnRegisterAsync()
+        {
+            await Shell.Current.GoToAsync("///RegistrationPage");
         }
     }
 }
