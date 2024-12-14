@@ -16,6 +16,7 @@ public partial class RegistrationPage : ContentPage
     private async void OnSwipeBack(object sender, EventArgs e)
     {
         //await this.TranslateTo(-this.Width, 0, 500, Easing.CubicOut);
-        await Shell.Current.GoToAsync("///LoginPage");
+        await Shell.Current.GoToAsync("..");
+        //await Shell.Current.GoToAsync("///LoginPage");
     }
 }

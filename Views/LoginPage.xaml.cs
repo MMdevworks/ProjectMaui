@@ -3,7 +3,7 @@ using ProjectMaui.Models;
 using SQLite;
 public partial class LoginPage : ContentPage
 {
-    private SQLiteConnection dbconnection;
+    //private SQLiteConnection dbconnection;
     public LoginPage()
 	{
 		InitializeComponent(); 

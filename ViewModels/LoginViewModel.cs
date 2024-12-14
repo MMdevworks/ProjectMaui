@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SQLite;
 using System.Windows.Input;
 using ProjectMaui.Models;
+using CommunityToolkit.Mvvm.Input;
 
 namespace ProjectMaui.ViewModels
 {
@@ -22,9 +23,6 @@ namespace ProjectMaui.ViewModels
 
         [ObservableProperty]
         private string errorMessage;
-
-        public ICommand LoginCommand { get; }
-        public ICommand RegisterCommand { get; }
 
         public LoginViewModel()
         {
@@ -45,13 +43,11 @@ namespace ProjectMaui.ViewModels
         //        Password = hashedPassword
         //    };
         //    dbconnection.Insert(testUser);
-        //} 
+        //}
         #endregion
-
+        [RelayCommand]
         private async Task OnLoginAsync()
         {
-            //var username = UsernameEntry.Text?.Trim();
-            //var password = PasswordEntry.Text?.Trim();
 
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
             {
@@ -64,7 +60,7 @@ namespace ProjectMaui.ViewModels
             {
 
                 ErrorMessage = string.Empty;
-                await Shell.Current.GoToAsync("///MainPage");
+                await Shell.Current.GoToAsync("/MainPage");
             }
             else
             {
@@ -72,9 +68,10 @@ namespace ProjectMaui.ViewModels
             }
         }
 
+        [RelayCommand]
         private async Task OnRegisterAsync()
         {
-            await Shell.Current.GoToAsync("///RegistrationPage");
+            await Shell.Current.GoToAsync("/RegistrationPage");
         }
     }
 }
