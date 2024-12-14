@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 using ProjectMaui;
 using ProjectMaui.Models;
 
@@ -30,4 +32,14 @@ public class ExerciseService
     }
 }
 
-
+//using appsettings
+//public ExerciseService(IConfiguration config)
+//{
+//    var baseUrl = config["API:BaseUrl"];
+//    var apiKey = config["API:ApiKey"];
+//    httpClient = new HttpClient
+//    {
+//        BaseAddress = new Uri(baseUrl)
+//    };
+//    httpClient.DefaultRequestHeaders.Add("X-Api-Key", apiKey);
+//}

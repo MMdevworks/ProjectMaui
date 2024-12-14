@@ -94,5 +94,11 @@
 	  <Folder Include="Helpers\" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 
 </Project>

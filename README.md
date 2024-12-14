@@ -11,7 +11,7 @@ Packages:
     SQLite-net-pcl
     SQLitePCLRaw.bundle_green
     BCrypt
-
+    Microsoft.Extensions.Configuration.Json
 Postman
 ApiNinjas
 ```
