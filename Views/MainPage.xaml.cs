@@ -48,27 +48,31 @@ public partial class MainPage : ContentPage
 		listView.ItemsSource = await localDbService.GetClients();
 	}
 
+	//move to clientpage
 	private async void listViewItemTapped(object sender, ItemTappedEventArgs e)
 	{
-		var client = (Client)e.Item;
-		var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Delete");
 
-		switch (action)
-		{
-			case "Edit": 
-				editClientId = client.Id;
-                nameEntryField.Text = client.Name;
-                emailEntryField.Text = client.Email;
-                mobileEntryField.Text = client.Mobile;
+        await Shell.Current.GoToAsync("/ClientDetailsPage");
+    
+		//var client = (Client)e.Item;
+		//var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Delete");
 
-				break;
-			case "Delete":
+		//switch (action)
+		//{
+		//	case "Edit": 
+		//		editClientId = client.Id;
+  //              nameEntryField.Text = client.Name;
+  //              emailEntryField.Text = client.Email;
+  //              mobileEntryField.Text = client.Mobile;
 
-				await localDbService.DeleteClient(client);
-				listView.ItemsSource = await localDbService.GetClients();
-				break;
+		//		break;
+		//	case "Delete":
 
-        }
+		//		await localDbService.DeleteClient(client);
+		//		listView.ItemsSource = await localDbService.GetClients();
+		//		break;
+
+        //}
 	}
 
     private void DebugOnFrameTapped(object sender, EventArgs e)

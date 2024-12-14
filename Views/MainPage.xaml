@@ -5,8 +5,8 @@
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
              x:DataType="viewModel:ExerciseViewModel"          
-             
-             Title="{Binding Title}">
+             Title="MAAAAIIIN">
+             <!--Title="{Binding Title}">-->
 
 
 
@@ -15,12 +15,14 @@
         <CollectionView BackgroundColor="white" Grid.ColumnSpan="2" 
                         ItemsSource="{Binding Exercises}"
                         SelectionMode="None">
-            
+            <!--Adding new client-->
             <CollectionView.EmptyView>
                 <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray">
                     <Entry x:Name="nameEntryField" Placeholder="Name" BackgroundColor="White"/>
                     <Entry x:Name="emailEntryField" Placeholder="Email" BackgroundColor="White"/>
                     <Entry x:Name="mobileEntryField" Placeholder="Mobile" BackgroundColor="White"/>
+                    <!--additional info-->
+                    <Entry Placeholder="Notes" BackgroundColor="White"/>
                     <Button x:Name="saveButton" Text="Save" Clicked="saveButtonClicked"/>
                 
                     <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listViewItemTapped">
@@ -46,7 +48,7 @@
                     </ListView>
                 </VerticalStackLayout>
             </CollectionView.EmptyView>
-
+<!--will most likely move to clientpage-->
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Exercise">
                     <Grid Padding="10">
@@ -77,8 +79,6 @@
         <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
                             ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=FormattedMuscleList}" 
                             SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Muscle}" />
-        <Button Text="Search" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Margin="8" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=LoadExercisesCommand}"
-IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=IsNotBusy}" />
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                                IsRunning="{Binding IsBusy}"

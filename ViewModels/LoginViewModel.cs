@@ -60,7 +60,7 @@ namespace ProjectMaui.ViewModels
             {
 
                 ErrorMessage = string.Empty;
-                await Shell.Current.GoToAsync("/MainPage");
+                await Shell.Current.GoToAsync("///MainPage");
             }
             else
             {
