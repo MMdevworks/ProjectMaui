@@ -97,11 +97,6 @@ namespace ProjectMaui.ViewModels
             {
                 if (client != null)
                 {
-                    //ClientId = client.Id;
-                    //Name = client.Name;
-                    //Email = client.Email;
-                    //Mobile = client.Mobile;
-
                     await Shell.Current.GoToAsync("/ClientDetailsPage");
                 }
             }

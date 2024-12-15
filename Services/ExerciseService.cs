@@ -27,7 +27,7 @@ public class ExerciseService
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
             throw new InvalidOperationException("No internet connection.");
 
-        var response = await httpClient.GetFromJsonAsync<List<Exercise>>($"exercises?muscle={muscle}"); //($"exercises?muscle={muscle}");
+        var response = await httpClient.GetFromJsonAsync<List<Exercise>>($"exercises?muscle={muscle}");
         return response ?? new List<Exercise>();
     }
 }
