@@ -11,7 +11,7 @@
 
 
     <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,*" RowSpacing="0">
-                <VerticalStackLayout Grid.Row="0" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray">
+        <VerticalStackLayout Grid.Row="0" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray" IsVisible="{Binding IsFormVisible}">
                     <Entry Placeholder="Name" Text="{Binding Name}" BackgroundColor="White"/>
                     <Entry Placeholder="Email" Text="{Binding Email}" BackgroundColor="White"/>
                     <Entry Placeholder="Mobile" Text="{Binding Mobile}" BackgroundColor="White"/>
@@ -19,21 +19,25 @@
                     <Entry Placeholder="Notes" BackgroundColor="White"/>
                     <Button Text="Save" Command="{Binding SaveClientCommand}"/>
                 </VerticalStackLayout>
+
+        <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="0" HorizontalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
         
+        
+
         <!--<CollectionView Grid.Row="1" BackgroundColor="white" Grid.ColumnSpan="2" 
                         ItemsSource="{Binding Clients}"
                         SelectionMode="None">-->
             <!--Adding new client-->
             <!--<CollectionView.ItemTemplate>-->
-            <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
+        <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
                   ItemsSource="{Binding Clients}" 
                   SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
                   HasUnevenRows="True">
-                <ListView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Client">
-                        <ViewCell>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Client">
+                    <ViewCell>
                         <SwipeView>
-                            <SwipeView.RighttItems>
+                            <SwipeView.RightItems>
                                 <SwipeItems Mode="Reveal">
                                     <SwipeItem Text="Edit"
                                        BackgroundColor="Blue"
@@ -44,7 +48,7 @@
                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:MainViewModel}}, Path=DeleteCommand}"
                                        CommandParameter="{Binding .}" />
                                 </SwipeItems>
-                            </SwipeView.RighttItems>
+                            </SwipeView.RightItems>
 
                             <VerticalStackLayout Padding="5">
                                 <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
@@ -61,11 +65,9 @@
                             </VerticalStackLayout>
                         </SwipeView>
                     </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            <!--</CollectionView.ItemTemplate>-->
-        <!--</CollectionView>-->
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </ContentPage>
     
