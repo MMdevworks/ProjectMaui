@@ -28,6 +28,9 @@ namespace ProjectMaui.ViewModels
         [ObservableProperty]
         private string mobile;
 
+        //[ObservableProperty]
+        //private bool isEdit;
+
         private Client selectedClient;
 
         public ObservableCollection<Client> Clients { get; } = new();
@@ -98,6 +101,38 @@ namespace ProjectMaui.ViewModels
                 if (client != null)
                 {
                     await Shell.Current.GoToAsync("/ClientDetailsPage");
+                }
+            }
+        }
+
+        [RelayCommand]
+        private void EditClient(Client client)
+        {
+            if (client != null)
+            {
+                ClientId = client.Id;
+                Name = client.Name;
+                Email = client.Email;
+                Mobile = client.Mobile;
+                //IsEdit = true;
+            }
+        }
+
+        [RelayCommand]
+        private async Task DeleteClient(Client client)
+        {
+            if (client != null)
+            {
+                bool userConfirm = await App.Current.MainPage.DisplayAlert(
+                    "Delete Client",$"Are you sure you want to delete {client.Name}?",
+                    "Yes",
+                    "No");
+
+                if (userConfirm)
+                {
+                    await localService.DeleteClient(client);
+
+                    Clients.Remove(client);
                 }
             }
         }
