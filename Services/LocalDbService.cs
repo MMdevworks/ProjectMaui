@@ -17,15 +17,19 @@ namespace ProjectMaui.Services
             connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
             connection.CreateTableAsync<Client>();
         }
-
+        // todo try catch
         public async Task<List<Client>> GetClients()
         {
             return await connection.Table<Client>().ToListAsync();
         }
-
-        public async Task<Client> GetClientById(string name)
+        //currently using name
+        //public async Task<Client> GetClientById(string name)
+        //{
+        //    return await connection.Table<Client>().Where(x => x.Name == name).FirstOrDefaultAsync();
+        //}
+        public async Task<Client> GetClientById(int id)
         {
-            return await connection.Table<Client>().Where(x => x.Name == name).FirstOrDefaultAsync();
+            return await connection.Table<Client>().Where(x => x.Id == id).FirstOrDefaultAsync();
         }
 
         public async Task CreateClient(Client client)

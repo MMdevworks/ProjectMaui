@@ -11,6 +11,7 @@ namespace ProjectMaui
             Routing.RegisterRoute(nameof(LoginPage), typeof(LoginPage));
             Routing.RegisterRoute(nameof(RegistrationPage), typeof(RegistrationPage));
             Routing.RegisterRoute(nameof(ExerciseDetailsPage), typeof(ExerciseDetailsPage));
+            Routing.RegisterRoute(nameof(ClientDetailsPage), typeof(ClientDetailsPage));
         }
     }
 }

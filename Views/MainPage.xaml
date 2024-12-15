@@ -4,50 +4,68 @@
              x:Class="ProjectMaui.Views.MainPage"
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
-             x:DataType="viewModel:ExerciseViewModel"          
-             
-             Title="{Binding Title}">
+             x:DataType="viewModel:MainViewModel"          
+             Title="MAAAAIIIN">
+             <!--Title="{Binding Title}">-->
 
 
 
-    <Grid ColumnDefinitions="*,*"
-          ColumnSpacing="5" RowDefinitions="*,100" RowSpacing="0">
-        <CollectionView BackgroundColor="white" Grid.ColumnSpan="2" 
-                        ItemsSource="{Binding Exercises}"
-                        SelectionMode="None">
-            
-            <CollectionView.EmptyView>
-                <VerticalStackLayout Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray">
-                    <Entry x:Name="nameEntryField" Placeholder="Name" BackgroundColor="White"/>
-                    <Entry x:Name="emailEntryField" Placeholder="Email" BackgroundColor="White"/>
-                    <Entry x:Name="mobileEntryField" Placeholder="Mobile" BackgroundColor="White"/>
-                    <Button x:Name="saveButton" Text="Save" Clicked="saveButtonClicked"/>
-                
-                    <ListView x:Name="listView" FlexLayout.Grow="1" HasUnevenRows="True" ItemTapped="listViewItemTapped">
-                        <ListView.ItemTemplate>
-                            <DataTemplate x:DataType="model:Client">
-                                <ViewCell>
-                                    <VerticalStackLayout Padding="5">
-                                        <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
-                                        <Grid>
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto"/>
-                                                <ColumnDefinition Width="*"/>
-                                                <ColumnDefinition Width="Auto"/>
-                                            </Grid.ColumnDefinitions>
-                                            <Label Grid.Column="0" Text="{Binding Email}"/>
-                                            <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
-                                        
-                                        </Grid>
-                                    </VerticalStackLayout>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+    <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,*" RowSpacing="0">
+        <VerticalStackLayout Grid.Row="0" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray" IsVisible="{Binding IsFormVisible}">
+                    <Entry Placeholder="Name" Text="{Binding Name}" BackgroundColor="White"/>
+                    <Entry Placeholder="Email" Text="{Binding Email}" BackgroundColor="White"/>
+                    <Entry Placeholder="Mobile" Text="{Binding Mobile}" BackgroundColor="White"/>
+                    <!--additional info-->
+                    <Entry Placeholder="Notes" BackgroundColor="White"/>
+                    <Button Text="Save" Command="{Binding SaveClientCommand}"/>
                 </VerticalStackLayout>
-            </CollectionView.EmptyView>
 
-            <CollectionView.ItemTemplate>
+        <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="0" HorizontalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
+            
+        <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
+                  ItemsSource="{Binding Clients}" 
+                  SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
+                  HasUnevenRows="True">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="model:Client">
+                    <ViewCell>
+                        <SwipeView>
+                            <SwipeView.RightItems>
+                                <SwipeItems Mode="Reveal">
+                                    <SwipeItem Text="Edit"
+                                       BackgroundColor="Blue"
+                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:MainViewModel}}, Path=EditCommand}"
+                                       CommandParameter="{Binding .}" />
+                                    <SwipeItem Text="Delete"
+                                       BackgroundColor="Red"
+                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:MainViewModel}}, Path=DeleteCommand}"
+                                       CommandParameter="{Binding .}" />
+                                </SwipeItems>
+                            </SwipeView.RightItems>
+
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Email}"/>
+                                    <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
+
+                                </Grid>
+                            </VerticalStackLayout>
+                        </SwipeView>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</ContentPage>
+    
+        <!--will most likely move to clientpage-->
+            <!--<CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Exercise">
                     <Grid Padding="10">
                         <Frame HeightRequest="125" Padding="0" InputTransparent="True">
@@ -59,7 +77,7 @@
 
                             <Grid Padding="0" 
                                   ColumnDefinitions="125,*">
-                              
+                               
                                 <VerticalStackLayout Grid.Column="1"
                                                      Padding="10"
                                                      VerticalOptions="Center">
@@ -71,21 +89,16 @@
                         </Frame>
                     </Grid>
                 </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+            </CollectionView.ItemTemplate>-->
+        
         <!--<Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding LoadExercisesCommand}" IsEnabled="{Binding IsNotBusy}"/>-->
-        <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
+        <!--<Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
                             ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=FormattedMuscleList}" 
                             SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Muscle}" />
-        <Button Text="Search" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Margin="8" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=LoadExercisesCommand}"
-IsEnabled="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=IsNotBusy}" />
 
         <ActivityIndicator IsVisible="{Binding IsBusy}"
                                IsRunning="{Binding IsBusy}"
                                HorizontalOptions="FillAndExpand"
                                VerticalOptions="CenterAndExpand"
                                Grid.RowSpan="2"
-                               Grid.ColumnSpan="2"/>
-
-    </Grid>
-</ContentPage>
+                               Grid.ColumnSpan="2"/>-->

@@ -12,10 +12,11 @@ public partial class RegistrationPage : ContentPage
     //	Console.WriteLine("register clicked");
     //}
 
-    //go back swipe
+
+
+    //go back swipe (can add to baseview model for reusability)
     private async void OnSwipeBack(object sender, EventArgs e)
     {
-        //await this.TranslateTo(-this.Width, 0, 500, Easing.CubicOut);
-        await Shell.Current.GoToAsync("///LoginPage");
+        await Shell.Current.GoToAsync("..");
     }
 }
