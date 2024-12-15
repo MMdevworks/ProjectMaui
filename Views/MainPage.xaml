@@ -19,36 +19,44 @@
                     <Entry Placeholder="Notes" BackgroundColor="White"/>
                     <Button Text="Save" Command="{Binding SaveClientCommand}"/>
                 </VerticalStackLayout>
-        <CollectionView Grid.Row="1" BackgroundColor="white" Grid.ColumnSpan="2" 
-                        ItemsSource="{Binding Clients}"
-                        SelectionMode="None">
-            <!--Adding new client-->
-            
-                
         
+        <!--<CollectionView Grid.Row="1" BackgroundColor="white" Grid.ColumnSpan="2" 
+                        ItemsSource="{Binding Clients}"
+                        SelectionMode="None">-->
+            <!--Adding new client-->
+            <!--<CollectionView.ItemTemplate>-->
+            <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
+                  ItemsSource="{Binding Clients}" 
+                  SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
+                  HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Client">
+                        <ViewCell>
+                            <!--<DataTemplate x:DataType="model:Client">-->
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Client">
+                            <VerticalStackLayout Padding="5">
+                                <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Grid.Column="0" Text="{Binding Email}"/>
+                                    <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
 
-                    <VerticalStackLayout Padding="5">
-                        <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
-                            <Label Grid.Column="0" Text="{Binding Email}"/>
-                            <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
-
-                        </Grid>
-                    </VerticalStackLayout>
-
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-
-
-<!--will most likely move to clientpage-->
+                                </Grid>
+                            </VerticalStackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <!--</CollectionView.ItemTemplate>-->
+        <!--</CollectionView>-->
+    </Grid>
+</ContentPage>
+    
+        <!--will most likely move to clientpage-->
             <!--<CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:Exercise">
                     <Grid Padding="10">
@@ -74,7 +82,7 @@
                     </Grid>
                 </DataTemplate>
             </CollectionView.ItemTemplate>-->
-        </CollectionView>
+        
         <!--<Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding LoadExercisesCommand}" IsEnabled="{Binding IsNotBusy}"/>-->
         <!--<Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
                             ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=FormattedMuscleList}" 
@@ -87,5 +95,3 @@
                                Grid.RowSpan="2"
                                Grid.ColumnSpan="2"/>-->
 
-    </Grid>
-</ContentPage>

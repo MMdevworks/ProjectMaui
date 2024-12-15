@@ -28,6 +28,8 @@ namespace ProjectMaui.ViewModels
         [ObservableProperty]
         private string mobile;
 
+        private Client selectedClient;
+
         public ObservableCollection<Client> Clients { get; } = new();
 
         public MainViewModel(LocalDbService localDbService)
@@ -95,12 +97,31 @@ namespace ProjectMaui.ViewModels
             {
                 if (client != null)
                 {
-                    ClientId = client.Id;
-                    Name = client.Name;
-                    Email = client.Email;
-                    Mobile = client.Mobile;
+                    //ClientId = client.Id;
+                    //Name = client.Name;
+                    //Email = client.Email;
+                    //Mobile = client.Mobile;
 
                     await Shell.Current.GoToAsync("/ClientDetailsPage");
+                }
+            }
+        }
+
+        public Client SelectedClient
+        {
+            get => selectedClient;
+            set
+            {
+                if (selectedClient != value)
+                {
+                    selectedClient = value;
+                    OnPropertyChanged();
+
+                    // Perform tapped action, e.g., navigate to a details page
+                    if (selectedClient != null)
+                    {
+                        OnClientTapped(selectedClient);
+                    }
                 }
             }
         }
