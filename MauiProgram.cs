@@ -33,6 +33,7 @@ namespace ProjectMaui
             builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
             //builder.Services.AddSingleton<IConfiguration>(configuration);
             builder.Services.AddSingleton<MainPage>();
+            builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddSingleton<LocalDbService>();
             builder.Services.AddSingleton<ExerciseService>();
             builder.Services.AddSingleton<ExerciseViewModel>();

@@ -17,7 +17,7 @@ namespace ProjectMaui.Services
             connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
             connection.CreateTableAsync<Client>();
         }
-
+        // todo try catch
         public async Task<List<Client>> GetClients()
         {
             return await connection.Table<Client>().ToListAsync();

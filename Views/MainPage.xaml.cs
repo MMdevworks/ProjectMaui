@@ -8,51 +8,51 @@ namespace ProjectMaui.Views;
 
 public partial class MainPage : ContentPage
 {
-	private readonly LocalDbService localDbService;
-	private int editClientId;
-	public MainPage(ExerciseViewModel vm, LocalDbService db)
+	//private readonly LocalDbService localDbService;
+	//private int editClientId;
+	public MainPage(MainViewModel vm)
 	{
 		InitializeComponent();
 		BindingContext = vm;
-		localDbService = db;
-		Task.Run(async () => listView.ItemsSource = await localDbService.GetClients());
+		//localDbService = db;
+		//Task.Run(async () => listView.ItemsSource = await localDbService.GetClients());
 	}
 
-	private async void saveButtonClicked(object sender, EventArgs e)
-	{
-		if (editClientId == 0)
-		{
-			await localDbService.CreateClient(new Client //create
-			{
-				Name = nameEntryField.Text,
-				Email = emailEntryField.Text,
-				Mobile = mobileEntryField.Text
-			});
-		}
-		else
-		{
-			await localDbService.UpdateClient(new Client //else edit by id
-			{
-				Id = editClientId,
-				Name = nameEntryField.Text,
-				Email = emailEntryField.Text,
-				Mobile = mobileEntryField.Text
-            });
+	//private async void saveButtonClicked(object sender, EventArgs e)
+	//{
+	//	if (editClientId == 0)
+	//	{
+	//		await localDbService.CreateClient(new Client //create
+	//		{
+	//			Name = nameEntryField.Text,
+	//			Email = emailEntryField.Text,
+	//			Mobile = mobileEntryField.Text
+	//		});
+	//	}
+	//	else
+	//	{
+	//		await localDbService.UpdateClient(new Client //else edit by id
+	//		{
+	//			Id = editClientId,
+	//			Name = nameEntryField.Text,
+	//			Email = emailEntryField.Text,
+	//			Mobile = mobileEntryField.Text
+ //           });
 
-			editClientId = 0;
-        }
+	//		editClientId = 0;
+ //       }
 
-		nameEntryField.Text = string.Empty;
-		emailEntryField.Text = string.Empty;
-		mobileEntryField.Text = string.Empty;
-		listView.ItemsSource = await localDbService.GetClients();
-	}
+	//	nameEntryField.Text = string.Empty;
+	//	emailEntryField.Text = string.Empty;
+	//	mobileEntryField.Text = string.Empty;
+	//	listView.ItemsSource = await localDbService.GetClients();
+	//}
 
 	//move to clientpage
-	private async void listViewItemTapped(object sender, ItemTappedEventArgs e)
-	{
+	//private async void listViewItemTapped(object sender, ItemTappedEventArgs e)
+	//{
 
-        await Shell.Current.GoToAsync("/ClientDetailsPage");
+ //       await Shell.Current.GoToAsync("/ClientDetailsPage");
     
 		//var client = (Client)e.Item;
 		//var action = await DisplayActionSheet("Action", "Cancel", null, "Edit", "Delete");
@@ -73,10 +73,10 @@ public partial class MainPage : ContentPage
 		//		break;
 
         //}
-	}
+	//}
 
-    private void DebugOnFrameTapped(object sender, EventArgs e)
-    {
-        Console.WriteLine("Frame tapped");
-    }
+    //private void DebugOnFrameTapped(object sender, EventArgs e)
+    //{
+    //    Console.WriteLine("Frame tapped");
+    //}
 }
