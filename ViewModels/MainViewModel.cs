@@ -128,7 +128,6 @@ namespace ProjectMaui.ViewModels
             }
         }
 
-        //[RelayCommand]
         private void EditClient(Client client)
         {
             if (client != null)
@@ -145,7 +144,6 @@ namespace ProjectMaui.ViewModels
             }
         }
 
-        //[RelayCommand]
         private async Task DeleteClient(Client client)
         {
             if (client != null)
@@ -175,7 +173,7 @@ namespace ProjectMaui.ViewModels
                     selectedClient = value;
                     OnPropertyChanged();
 
-                    // Perform tapped action, e.g., navigate to a details page
+                    // Perform tapped action
                     if (selectedClient != null)
                     {
                         OnClientTapped(selectedClient);
