@@ -2,7 +2,6 @@
 using CommunityToolkit.Mvvm.Input;
 using ProjectMaui.Models;
 using ProjectMaui.Services;
-using ProjectMaui.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -123,8 +122,9 @@ namespace ProjectMaui.ViewModels
             {
                 if (client != null)
                 {
-                    await Shell.Current.GoToAsync("/ClientDetailsPage");
-                }
+                    Debug.WriteLine($"==============>  On Tapped go to details page for: {client.Name} {client.Id}");
+                    await Shell.Current.GoToAsync($"/ClientDetailsPage?clientId={client.Id}");
+                }           
             }
         }
 
