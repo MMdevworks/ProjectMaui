@@ -12,13 +12,15 @@ public partial class ClientDetailsPage : ContentPage
         BindingContext = exvm;
 
     }
-    //protected override async void OnNavigatedTo(NavigatedToEventArgs args)
-    //{
-    //    base.OnNavigatedTo(args);
-    //    if (BindingContext is ClientDetailsViewModel viewModel)
-    //    {
-    //        await viewModel.LoadClientDetailsAsync();
-    //    }
-    //}
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
 
+        // clear any exercises when page appears
+        if (BindingContext is ExerciseViewModel viewModel)
+        {
+            viewModel.Exercises.Clear();
+            viewModel.Muscle = null;
+        }
+    }
 }
