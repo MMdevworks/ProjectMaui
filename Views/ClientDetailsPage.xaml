@@ -4,11 +4,11 @@
              x:Class="ProjectMaui.Views.ClientDetailsPage"
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
-             x:DataType="viewModel:ClientDetailsViewModel"
+             x:DataType="viewModel:ExerciseViewModel"
              Title="Client Details Page">
 
     <VerticalStackLayout>
-        <Label 
+        <!--<Label 
             Text="{Binding Client.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
@@ -26,9 +26,9 @@
         <Label 
          Text="{Binding Client.Notes}"
          VerticalOptions="Center" 
-         HorizontalOptions="Center" />
+         HorizontalOptions="Center" />-->
 
-        <!--<VerticalStackLayout x:Name="ExerciseSection">-->
+        
         <CollectionView ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Exercises}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Exercise">
@@ -55,12 +55,13 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        <!--</VerticalStackLayout>-->
         <Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=LoadExercisesCommand}"  IsEnabled="{Binding IsNotBusy}"/>
     <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
-                     ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=FormattedMuscleList}" 
-                     SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Muscle}" />
-
+                     ItemsSource="{Binding Path=FormattedMuscleList}" 
+                     SelectedItem="{Binding Path=Muscle}"
+                     />
+    
+                        
  <ActivityIndicator IsVisible="{Binding IsBusy}"
                         IsRunning="{Binding IsBusy}"
                         HorizontalOptions="FillAndExpand"

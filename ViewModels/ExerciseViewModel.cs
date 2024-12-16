@@ -43,6 +43,8 @@ namespace ProjectMaui.ViewModels
             Title = "Exercise Title"; // from base view model
             this.exerciseService = exerciseService;
             this.connectivity = connectivity;
+
+            Debug.WriteLine("ExerciseViewModel initialized.");
         }
 
         partial void OnMuscleChanged(string value)

@@ -1,14 +1,16 @@
 using ProjectMaui.ViewModels;
+using System.Diagnostics;
 
 namespace ProjectMaui.Views;
 
 public partial class ClientDetailsPage : ContentPage
 {
-	public ClientDetailsPage(ClientDetailsViewModel clientvm)//ClientDetailsViewModel clientvm //ExerciseViewModel exvm
+	public ClientDetailsPage(ExerciseViewModel exvm)//ClientDetailsViewModel clientvm //ExerciseViewModel exvm
     {
 		InitializeComponent();
-		BindingContext = clientvm;
-        //ExerciseSection.BindingContext = exvm;
+		//BindingContext = clientvm;
+        BindingContext = exvm;
+
     }
     //protected override async void OnNavigatedTo(NavigatedToEventArgs args)
     //{
