@@ -1,10 +1,9 @@
 ﻿using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Configuration;
 using ProjectMaui.Services;
 using ProjectMaui.ViewModels;
 using ProjectMaui.Views;
 using CommunityToolkit.Maui;
-using Microsoft.Maui.Controls;
+
 
 namespace ProjectMaui
 {

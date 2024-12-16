@@ -1,11 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using SQLite;
-using System.Windows.Input;
 using ProjectMaui.Models;
 using CommunityToolkit.Mvvm.Input;
 

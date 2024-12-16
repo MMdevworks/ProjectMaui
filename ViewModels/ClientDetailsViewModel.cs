@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ProjectMaui.Models;
 using ProjectMaui.Services;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Reflection;
-using System.Xml.Linq;
 using System.Diagnostics;
 
 

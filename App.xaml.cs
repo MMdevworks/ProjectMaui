@@ -1,5 +1,4 @@
-﻿using System.Diagnostics;
-
+﻿
 namespace ProjectMaui
 {
     public partial class App : Application

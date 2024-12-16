@@ -1,5 +1,4 @@
 using ProjectMaui.ViewModels;
-using System.Diagnostics;
 
 namespace ProjectMaui.Views;
 
