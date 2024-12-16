@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
              x:DataType="viewModel:MainViewModel"          
-             Title="MAAAAIIIN">
+             Title="Main View">
              <!--Title="{Binding Title}">-->
 
 

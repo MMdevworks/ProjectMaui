@@ -119,12 +119,19 @@ namespace ProjectMaui.ViewModels
         [RelayCommand]
         private async Task OnClientTapped(Client client)
         {
+            try
             {
                 if (client != null)
                 {
                     Debug.WriteLine($"==============>  On Tapped go to details page for: {client.Name} {client.Id}");
                     await Shell.Current.GoToAsync($"/ClientDetailsPage?clientId={client.Id}");
-                }           
+                    await Task.CompletedTask;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error navigating: {ex.Message}");
+                Debug.WriteLine(ex.StackTrace);
             }
         }
 

@@ -4,7 +4,7 @@ namespace ProjectMaui.Views;
 
 public partial class ClientDetailsPage : ContentPage
 {
-	public ClientDetailsPage(ClientDetailsViewModel clientvm)//ExerciseViewModel exvm
+	public ClientDetailsPage(ClientDetailsViewModel clientvm)//ClientDetailsViewModel clientvm //ExerciseViewModel exvm
     {
 		InitializeComponent();
 		BindingContext = clientvm;

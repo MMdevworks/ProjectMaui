@@ -1,4 +1,6 @@
-﻿namespace ProjectMaui
+﻿using System.Diagnostics;
+
+namespace ProjectMaui
 {
     public partial class App : Application
     {
@@ -7,6 +9,7 @@
             InitializeComponent();
 
             MainPage = new AppShell();
+
         }
     }
 }

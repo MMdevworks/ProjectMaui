@@ -5,7 +5,7 @@
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
              x:DataType="viewModel:ClientDetailsViewModel"
-             Title="Client Details Pageeee">
+             Title="Client Details Page">
 
     <VerticalStackLayout>
         <Label 
@@ -13,13 +13,18 @@
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
 
-         <Label 
-         Text="Clients Mobile"
+        <Label 
+         Text="{Binding Client.Mobile}"
          VerticalOptions="Center" 
          HorizontalOptions="Center" />
-        
-         <Label 
-         Text="Client Notes: work on proper form"
+        <Label 
+         Text="{Binding Client.Email}"
+         VerticalOptions="Center" 
+         HorizontalOptions="Center" />
+
+
+        <Label 
+         Text="{Binding Client.Notes}"
          VerticalOptions="Center" 
          HorizontalOptions="Center" />
 
