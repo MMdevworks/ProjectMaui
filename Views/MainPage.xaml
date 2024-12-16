@@ -8,10 +8,9 @@
              Title="Main View">
              <!--Title="{Binding Title}">-->
 
-
-
-    <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,*" RowSpacing="0">
-        <VerticalStackLayout Grid.Row="0" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray" IsVisible="{Binding IsFormVisible}">
+    <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,Auto" RowSpacing="0">
+        
+        <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray" IsVisible="{Binding IsFormVisible}">
                     <Entry Placeholder="Name" Text="{Binding Name}" BackgroundColor="White"/>
                     <Entry Placeholder="Email" Text="{Binding Email}" BackgroundColor="White"/>
                     <Entry Placeholder="Mobile" Text="{Binding Mobile}" BackgroundColor="White"/>
@@ -19,8 +18,6 @@
                     <Entry Placeholder="Notes" BackgroundColor="White"/>
                     <Button Text="Save" Command="{Binding SaveClientCommand}"/>
                 </VerticalStackLayout>
-
-        <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="0" HorizontalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
 
         <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
                   ItemsSource="{Binding Clients}" 
@@ -53,7 +50,6 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{Binding Email}"/>
                                     <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
-
                                 </Grid>
                             </VerticalStackLayout>
                         </SwipeView>
@@ -61,5 +57,8 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
+        <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
+
     </Grid>
 </ContentPage>
