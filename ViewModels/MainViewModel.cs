@@ -119,6 +119,7 @@ namespace ProjectMaui.ViewModels
         [RelayCommand]
         private async Task OnClientTapped(Client client)
         {
+            Debug.WriteLine("=========> Tap event triggered");
             try
             {
                 if (client != null)
@@ -130,7 +131,7 @@ namespace ProjectMaui.ViewModels
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error navigating: {ex.Message}");
+                Debug.WriteLine($"=========> Error navigating: {ex.Message}");
                 Debug.WriteLine(ex.StackTrace);
             }
         }

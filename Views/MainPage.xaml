@@ -21,7 +21,7 @@
                 </VerticalStackLayout>
 
         <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="0" HorizontalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
-            
+
         <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
                   ItemsSource="{Binding Clients}" 
                   SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
@@ -63,42 +63,3 @@
         </ListView>
     </Grid>
 </ContentPage>
-    
-        <!--will most likely move to clientpage-->
-            <!--<CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Exercise">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="125" Padding="0" InputTransparent="True">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=GoToDetailsCommand}"
-                                                      Tapped="DebugOnFrameTapped"/>
-                            </Frame.GestureRecognizers>
-
-                            <Grid Padding="0" 
-                                  ColumnDefinitions="125,*">
-                               
-                                <VerticalStackLayout Grid.Column="1"
-                                                     Padding="10"
-                                                     VerticalOptions="Center">
-                                    <Label Text="{Binding name}"/>
-                                    <Label Text="{Binding type}"/>
-                                   
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>-->
-        
-        <!--<Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding LoadExercisesCommand}" IsEnabled="{Binding IsNotBusy}"/>-->
-        <!--<Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
-                            ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=FormattedMuscleList}" 
-                            SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Muscle}" />
-
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                               IsRunning="{Binding IsBusy}"
-                               HorizontalOptions="FillAndExpand"
-                               VerticalOptions="CenterAndExpand"
-                               Grid.RowSpan="2"
-                               Grid.ColumnSpan="2"/>-->
