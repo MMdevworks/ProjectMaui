@@ -1,10 +1,6 @@
 ﻿using ProjectMaui.Models;
 using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ProjectMaui.Services
 {
@@ -22,11 +18,7 @@ namespace ProjectMaui.Services
         {
             return await connection.Table<Client>().ToListAsync();
         }
-        //currently using name
-        //public async Task<Client> GetClientById(string name)
-        //{
-        //    return await connection.Table<Client>().Where(x => x.Name == name).FirstOrDefaultAsync();
-        //}
+
         public async Task<Client> GetClientById(int id)
         {
             return await connection.Table<Client>().Where(x => x.Id == id).FirstOrDefaultAsync();

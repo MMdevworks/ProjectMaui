@@ -18,6 +18,7 @@ namespace ProjectMaui.ViewModels
         [ObservableProperty]
         private string errorMessage;
 
+        // create the folder path to store data (depending on device)
         public LoginViewModel()
         {
             string dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "users_local_db.db3");

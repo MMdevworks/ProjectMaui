@@ -31,6 +31,8 @@ namespace ProjectMaui
             builder.Logging.AddDebug();
             builder.Services.AddSingleton<IConnectivity>(Connectivity.Current);
             //builder.Services.AddSingleton<IConfiguration>(configuration);
+            builder.Services.AddSingleton<LoginViewModel>();
+            builder.Services.AddTransient<LoginPage>();
             builder.Services.AddSingleton<MainPage>();
             builder.Services.AddSingleton<MainViewModel>();
             builder.Services.AddTransient<ClientDetailsPage>();

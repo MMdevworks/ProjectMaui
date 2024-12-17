@@ -8,17 +8,18 @@
              Title="Main View">
              <!--Title="{Binding Title}">-->
 
-    <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,Auto" RowSpacing="0">
-        
+    <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,*" RowSpacing="0">
+
+        <!--add form-->
         <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray" IsVisible="{Binding IsFormVisible}">
                     <Entry Placeholder="Name" Text="{Binding Name}" BackgroundColor="White"/>
                     <Entry Placeholder="Email" Text="{Binding Email}" BackgroundColor="White"/>
-                    <Entry Placeholder="Mobile" Text="{Binding Mobile}" BackgroundColor="White"/>
-                    <!--additional info-->
+                    <Entry Placeholder="Mobile" Text="{Binding Mobile}" BackgroundColor="White"/>                   
                     <Entry Placeholder="Notes" BackgroundColor="White"/>
                     <Button Text="Save" Command="{Binding SaveClientCommand}"/>
-                </VerticalStackLayout>
-
+        </VerticalStackLayout>
+        
+        <!--item after client is added form-->
         <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
                   ItemsSource="{Binding Clients}" 
                   SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
@@ -58,6 +59,7 @@
             </ListView.ItemTemplate>
         </ListView>
         
+        <!--add btn-->
         <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
 
     </Grid>

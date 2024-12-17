@@ -127,7 +127,6 @@ namespace ProjectMaui.ViewModels
             catch (Exception ex)
             {
                 Debug.WriteLine($"=========> Error navigating: {ex.Message}");
-                Debug.WriteLine(ex.StackTrace);
             }
         }
 
