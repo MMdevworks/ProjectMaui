@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using ProjectMaui.Models;
 using ProjectMaui.Services;
-using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Reflection;
-using System.Xml.Linq;
+using System.Diagnostics;
 
 
 namespace ProjectMaui.ViewModels
@@ -41,9 +33,17 @@ namespace ProjectMaui.ViewModels
         }
         public async Task LoadClientDetailsAsync()
         {
-            if (clientId != 0)
+            try
             {
-                Client = await localDbService.GetClientById(clientId);
+                if (clientId != 0)
+                {
+                    Client = await localDbService.GetClientById(clientId);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log or handle the exception
+                Debug.WriteLine($"Error loading client details: {ex.Message}");
             }
         }
         //public int ClientId

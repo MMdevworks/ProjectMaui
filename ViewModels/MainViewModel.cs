@@ -2,13 +2,8 @@
 using CommunityToolkit.Mvvm.Input;
 using ProjectMaui.Models;
 using ProjectMaui.Services;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace ProjectMaui.ViewModels
@@ -34,11 +29,14 @@ namespace ProjectMaui.ViewModels
 
         [ObservableProperty]
         private bool isFormVisible;
+        
         [ObservableProperty]
         private bool isAddBtnVisible = true;
+        
         [ObservableProperty]
         private bool isEdit;
 
+        [ObservableProperty]
         private Client selectedClient;
 
         public ObservableCollection<Client> Clients { get; } = new();
@@ -46,6 +44,7 @@ namespace ProjectMaui.ViewModels
         public ICommand EditCommand => new RelayCommand<Client>(EditClient);
         public ICommand DeleteCommand => new RelayCommand<Client>(async (client) => await DeleteClient(client));
 
+        public ICommand ClientTappedCommand => new AsyncRelayCommand<Client> (OnClientTapped);
         public MainViewModel(LocalDbService localDbService)
         {
             this.localService = localDbService;
@@ -116,15 +115,22 @@ namespace ProjectMaui.ViewModels
             }
         }
 
-        [RelayCommand]
+        //[RelayCommand]
         private async Task OnClientTapped(Client client)
         {
+            Debug.WriteLine("=========> Tap event triggered");
+            try
             {
                 if (client != null)
                 {
                     Debug.WriteLine($"==============>  On Tapped go to details page for: {client.Name} {client.Id}");
                     await Shell.Current.GoToAsync($"/ClientDetailsPage?clientId={client.Id}");
-                }           
+                    await Task.CompletedTask;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"=========> Error navigating: {ex.Message}");
             }
         }
 
@@ -163,23 +169,23 @@ namespace ProjectMaui.ViewModels
             }
         }
 
-        public Client SelectedClient
-        {
-            get => selectedClient;
-            set
-            {
-                if (selectedClient != value)
-                {
-                    selectedClient = value;
-                    OnPropertyChanged();
+        //public Client SelectedClient
+        //{
+        //    get => selectedClient;
+        //    set
+        //    {
+        //        if (selectedClient != value)
+        //        {
+        //            selectedClient = value;
+        //            OnPropertyChanged();
 
-                    // Perform tapped action
-                    if (selectedClient != null)
-                    {
-                        OnClientTapped(selectedClient);
-                    }
-                }
-            }
-        }
+        //            // Perform tapped action
+        //            if (selectedClient != null)
+        //            {
+        //                OnClientTapped(selectedClient);
+        //            }
+        //        }
+        //    }
+        //}
     }
 }

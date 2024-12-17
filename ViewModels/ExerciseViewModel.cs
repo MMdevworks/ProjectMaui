@@ -1,16 +1,8 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.ObjectModel;
 using ProjectMaui.Models;
 using ProjectMaui.Views;
-using ProjectMaui.ViewModels;
 using CommunityToolkit.Mvvm.Input;
 using System.Diagnostics;
-using Microsoft.Maui.Devices.Sensors;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace ProjectMaui.ViewModels
@@ -43,6 +35,8 @@ namespace ProjectMaui.ViewModels
             Title = "Exercise Title"; // from base view model
             this.exerciseService = exerciseService;
             this.connectivity = connectivity;
+
+            Debug.WriteLine("ExerciseViewModel initialized.");
         }
 
         partial void OnMuscleChanged(string value)

@@ -1,9 +1,4 @@
-using ProjectMaui.Models;
-using ProjectMaui.Services;
 using ProjectMaui.ViewModels;
-using System.Reflection;
-using System.Xml.Linq;
-
 namespace ProjectMaui.Views;
 
 public partial class MainPage : ContentPage

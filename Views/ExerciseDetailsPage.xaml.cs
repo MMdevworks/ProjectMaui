@@ -6,9 +6,4 @@ public partial class ExerciseDetailsPage : ContentPage
 	{
 		InitializeComponent();
 	}
-
-    //private async void OnSwipeBack(object sender, EventArgs e)
-    //{
-    //    await Shell.Current.GoToAsync("..");
-    //}
 }

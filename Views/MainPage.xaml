@@ -5,23 +5,21 @@
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
              x:DataType="viewModel:MainViewModel"          
-             Title="MAAAAIIIN">
+             Title="Main View">
              <!--Title="{Binding Title}">-->
 
-
-
     <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,*" RowSpacing="0">
-        <VerticalStackLayout Grid.Row="0" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray" IsVisible="{Binding IsFormVisible}">
+
+        <!--add form-->
+        <VerticalStackLayout Grid.Row="0" Grid.ColumnSpan="2" Padding="10" FlexLayout.Basis="400" BackgroundColor="LightGray" IsVisible="{Binding IsFormVisible}">
                     <Entry Placeholder="Name" Text="{Binding Name}" BackgroundColor="White"/>
                     <Entry Placeholder="Email" Text="{Binding Email}" BackgroundColor="White"/>
-                    <Entry Placeholder="Mobile" Text="{Binding Mobile}" BackgroundColor="White"/>
-                    <!--additional info-->
+                    <Entry Placeholder="Mobile" Text="{Binding Mobile}" BackgroundColor="White"/>                   
                     <Entry Placeholder="Notes" BackgroundColor="White"/>
                     <Button Text="Save" Command="{Binding SaveClientCommand}"/>
-                </VerticalStackLayout>
-
-        <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="0" HorizontalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
-            
+        </VerticalStackLayout>
+        
+        <!--item after client is added form-->
         <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
                   ItemsSource="{Binding Clients}" 
                   SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
@@ -44,6 +42,9 @@
                             </SwipeView.RightItems>
 
                             <VerticalStackLayout Padding="5">
+                                <VerticalStackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:MainViewModel}}, Path=ClientTappedCommand}" CommandParameter="{Binding .}"/>
+                                </VerticalStackLayout.GestureRecognizers>
                                 <Label Text="{Binding Name}" FontSize="17" FontAttributes="Bold"/>
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -53,52 +54,17 @@
                                     </Grid.ColumnDefinitions>
                                     <Label Grid.Column="0" Text="{Binding Email}"/>
                                     <Label Grid.Column="2" Text="{Binding Mobile}" FontAttributes="Bold"/>
-
                                 </Grid>
                             </VerticalStackLayout>
+                            
                         </SwipeView>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
+        <!--add btn-->
+        <Button Text="Add Client" Command="{Binding AddClientCommand}" Grid.Row="2" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="End" IsVisible="{Binding IsAddBtnVisible}"/>
+
     </Grid>
 </ContentPage>
-    
-        <!--will most likely move to clientpage-->
-            <!--<CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:Exercise">
-                    <Grid Padding="10">
-                        <Frame HeightRequest="125" Padding="0" InputTransparent="True">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=GoToDetailsCommand}"
-                                                      Tapped="DebugOnFrameTapped"/>
-                            </Frame.GestureRecognizers>
-
-                            <Grid Padding="0" 
-                                  ColumnDefinitions="125,*">
-                               
-                                <VerticalStackLayout Grid.Column="1"
-                                                     Padding="10"
-                                                     VerticalOptions="Center">
-                                    <Label Text="{Binding name}"/>
-                                    <Label Text="{Binding type}"/>
-                                   
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>-->
-        
-        <!--<Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding LoadExercisesCommand}" IsEnabled="{Binding IsNotBusy}"/>-->
-        <!--<Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
-                            ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=FormattedMuscleList}" 
-                            SelectedItem="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Muscle}" />
-
-        <ActivityIndicator IsVisible="{Binding IsBusy}"
-                               IsRunning="{Binding IsBusy}"
-                               HorizontalOptions="FillAndExpand"
-                               VerticalOptions="CenterAndExpand"
-                               Grid.RowSpan="2"
-                               Grid.ColumnSpan="2"/>-->
