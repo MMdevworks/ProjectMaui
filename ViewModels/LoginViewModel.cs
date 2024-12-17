@@ -25,20 +25,20 @@ namespace ProjectMaui.ViewModels
             dbconnection = new SQLiteConnection(dbPath);
             dbconnection.CreateTable<User>();
 
-            AddTestUser();
+            //AddTestUser();
         }
 
         #region Test User
-        private void AddTestUser()
-        {
-            var hashedPassword = BCrypt.Net.BCrypt.HashPassword("password");
-            var testUser = new User
-            {
-                Username = "tester",
-                Password = hashedPassword
-            };
-            dbconnection.Insert(testUser);
-        }
+        //private void AddTestUser()
+        //{
+        //    var hashedPassword = BCrypt.Net.BCrypt.HashPassword("password");
+        //    var testUser = new User
+        //    {
+        //        Username = "tester",
+        //        Password = hashedPassword
+        //    };
+        //    dbconnection.Insert(testUser);
+        //}
         #endregion
         [RelayCommand]
         private async Task OnLoginAsync()
