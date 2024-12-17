@@ -13,6 +13,10 @@ namespace ProjectMaui.ViewModels
         public ObservableCollection<Exercise> Exercises { get; } = new();
 
         IConnectivity connectivity;
+
+        //[ObservableProperty]
+        //private Client selectedclient;
+
         [ObservableProperty]
         private string muscle;
         public List<string> MuscleList { get; } = new List<string> { "abdominals", "abductors", "adductors", "biceps", "calves", "chest", "forearms", "glutes", "hamstrings", "lats", "lower_back", "middle_back", "neck", "quadriceps", "traps", "triceps" };
@@ -30,11 +34,16 @@ namespace ProjectMaui.ViewModels
         }
         // dependency constructor injection, injecting service, and connectivity
         // when an instance of ExerciseViewModel is created we will get objects of the injected services
-        public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)
+        public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)//Client client=null
         {
             //Title = "Exercise Title"; 
             this.exerciseService = exerciseService;
             this.connectivity = connectivity;
+
+            //if (client != null)
+            //{
+            //    Selectedclient = client;
+            //}
 
             Debug.WriteLine("ExerciseViewModel initialized.");
         }

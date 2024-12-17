@@ -8,27 +8,11 @@
     <!--Title="{Binding Title}">-->
 
     <VerticalStackLayout>
-        <!--<Label 
-            Text="{Binding Client.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Name}" />
+        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Mobile}" />
+        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Email}" />
+        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Notes}" />
 
-        <Label 
-         Text="{Binding Client.Mobile}"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center" />
-        <Label 
-         Text="{Binding Client.Email}"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center" />
-
-
-        <Label 
-         Text="{Binding Client.Notes}"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center" />-->
-
-        
         <CollectionView ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Exercises}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Exercise">

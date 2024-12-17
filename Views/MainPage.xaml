@@ -18,7 +18,7 @@
                     <Button Text="Save" Command="{Binding SaveClientCommand}"/>
         </VerticalStackLayout>
         
-        <!--item after client is added form-->
+        <!--item after client is added form, use client model-->
         <ListView x:Name="listView" Grid.Row="1" BackgroundColor="White" Grid.ColumnSpan="2" 
                   ItemsSource="{Binding Clients}" 
                   SelectedItem="{Binding SelectedClient, Mode=TwoWay}"
