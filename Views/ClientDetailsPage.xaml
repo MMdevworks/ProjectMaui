@@ -4,14 +4,14 @@
              x:Class="ProjectMaui.Views.ClientDetailsPage"
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
-             x:DataType="viewModel:ExerciseViewModel">
+             x:DataType="viewModel:CombinedClientExerciseViewModel">
     <!--Title="{Binding Title}">-->
 
     <VerticalStackLayout>
-        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Name}" />
-        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Mobile}" />
+        <Label Text="{Binding ClientDetailsViewModel.Client.Name}" />
+        <!--<Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Mobile}" />
         <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Email}" />
-        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Notes}" />
+        <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Notes}" />-->
 
         <CollectionView ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Exercises}">
                 <CollectionView.ItemTemplate>
@@ -39,10 +39,10 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        <Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=LoadExercisesCommand}"  IsEnabled="{Binding IsNotBusy}"/>
+        <!--<Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=LoadExercisesCommand}"  IsEnabled="{Binding IsNotBusy}"/>-->
     <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
-                     ItemsSource="{Binding Path=FormattedMuscleList}" 
-                     SelectedItem="{Binding Path=Muscle}"
+                     ItemsSource="{Binding ExerciseViewModel.FormattedMuscleList}"
+                     SelectedItem="{Binding ExerciseViewModel.Muscle}"
                      />
     
                         

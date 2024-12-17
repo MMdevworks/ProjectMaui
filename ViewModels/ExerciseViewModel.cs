@@ -23,10 +23,7 @@ namespace ProjectMaui.ViewModels
 
         public List<string> FormattedMuscleList
         {
-            get
-            {
-                return GetFormattedMuscleList();
-            }
+            get{return GetFormattedMuscleList();}
         }
         public List<string> GetFormattedMuscleList()
         {
@@ -34,16 +31,10 @@ namespace ProjectMaui.ViewModels
         }
         // dependency constructor injection, injecting service, and connectivity
         // when an instance of ExerciseViewModel is created we will get objects of the injected services
-        public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)//Client client=null
+        public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)
         {
-            //Title = "Exercise Title"; 
             this.exerciseService = exerciseService;
             this.connectivity = connectivity;
-
-            //if (client != null)
-            //{
-            //    Selectedclient = client;
-            //}
 
             Debug.WriteLine("ExerciseViewModel initialized.");
         }
