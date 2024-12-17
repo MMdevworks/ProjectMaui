@@ -47,6 +47,7 @@ namespace ProjectMaui.ViewModels
         public ICommand ClientTappedCommand => new AsyncRelayCommand<Client> (OnClientTapped);
         public MainViewModel(LocalDbService localDbService)
         {
+            Title = "Clients";
             this.localService = localDbService;
             Task.Run(LoadClientsAsync);
         }
@@ -115,7 +116,6 @@ namespace ProjectMaui.ViewModels
             }
         }
 
-        //[RelayCommand]
         private async Task OnClientTapped(Client client)
         {
             Debug.WriteLine("=========> Tap event triggered");

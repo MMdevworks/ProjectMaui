@@ -4,8 +4,8 @@
              x:Class="ProjectMaui.Views.ClientDetailsPage"
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
-             x:DataType="viewModel:ExerciseViewModel"
-             Title="Client Details Page">
+             x:DataType="viewModel:ExerciseViewModel">
+    <!--Title="{Binding Title}">-->
 
     <VerticalStackLayout>
         <!--<Label 

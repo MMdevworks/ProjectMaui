@@ -32,7 +32,7 @@ namespace ProjectMaui.ViewModels
         // when an instance of ExerciseViewModel is created we will get objects of the injected services
         public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)
         {
-            Title = "Exercise Title"; // from base view model
+            //Title = "Exercise Title"; 
             this.exerciseService = exerciseService;
             this.connectivity = connectivity;
 

@@ -11,11 +11,6 @@ namespace ProjectMaui.ViewModels
     {
         private readonly LocalDbService localDbService;
 
-        public ClientDetailsViewModel(LocalDbService localDbService)
-        {
-            this.localDbService = localDbService;
-        }
-
         [ObservableProperty]
         private Client client;
         
@@ -31,6 +26,12 @@ namespace ProjectMaui.ViewModels
                 Task.Run(() => LoadClientDetailsAsync());
             }
         }
+        public ClientDetailsViewModel(LocalDbService localDbService)
+        {
+            //Title = client.Name;
+            this.localDbService = localDbService;
+        }
+
         public async Task LoadClientDetailsAsync()
         {
             try

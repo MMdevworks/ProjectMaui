@@ -5,8 +5,7 @@
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
              x:DataType="viewModel:MainViewModel"          
-             Title="Main View">
-             <!--Title="{Binding Title}">-->
+             Title="{Binding Title}">
 
     <Grid ColumnDefinitions="*,*" ColumnSpacing="5" RowDefinitions="Auto,*" RowSpacing="0">
 
