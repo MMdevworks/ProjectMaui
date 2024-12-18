@@ -14,9 +14,6 @@ namespace ProjectMaui.ViewModels
 
         IConnectivity connectivity;
 
-        //[ObservableProperty]
-        //private Client selectedclient;
-
         [ObservableProperty]
         private string muscle;
         public List<string> MuscleList { get; } = new List<string> { "abdominals", "abductors", "adductors", "biceps", "calves", "chest", "forearms", "glutes", "hamstrings", "lats", "lower_back", "middle_back", "neck", "quadriceps", "traps", "triceps" };
