@@ -4,12 +4,12 @@ namespace ProjectMaui.Views;
 
 public partial class ClientDetailsPage : ContentPage
 {
-	public ClientDetailsPage(CombinedClientExerciseViewModel combinedvm)
+    public ClientDetailsPage(ExerciseViewModel exercisevm)
     {
-		InitializeComponent();
-        BindingContext = combinedvm;
-        //BindingContext = exvm;
-        //BindingContext = clientvm;
+        InitializeComponent();
+      
+        BindingContext = exercisevm;
+
 
     }
     protected override void OnAppearing()
