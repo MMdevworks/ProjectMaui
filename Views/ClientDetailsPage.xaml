@@ -4,50 +4,41 @@
              x:Class="ProjectMaui.Views.ClientDetailsPage"
              xmlns:model="clr-namespace:ProjectMaui.Models"
              xmlns:viewModel="clr-namespace:ProjectMaui.ViewModels"
-             x:DataType="viewModel:ExerciseViewModel"
-             Title="Client Details Page">
+             x:DataType="viewModel:ExerciseViewModel">
+    <!--Title="{Binding Title}">-->
 
-    <VerticalStackLayout>
-        <!--<Label 
-            Text="{Binding Client.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+    <Grid Padding="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-        <Label 
-         Text="{Binding Client.Mobile}"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center" />
-        <Label 
-         Text="{Binding Client.Email}"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center" />
+        <StackLayout Grid.Row="0" Spacing="10">
+            <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Name}" />
+            <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Mobile}" />
+            <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Email}" />
+            <Label Text="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ClientDetailsViewModel}}, Path=Client.Notes}" />
+        </StackLayout>
 
-
-        <Label 
-         Text="{Binding Client.Notes}"
-         VerticalOptions="Center" 
-         HorizontalOptions="Center" />-->
-
-        
-        <CollectionView ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Exercises}">
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=Exercises}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Exercise">
                         <Grid Padding="10">
-                            <Frame HeightRequest="125" Padding="0" InputTransparent="True">
+                            <Frame HeightRequest="125" Padding="0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=GoToDetailsCommand}"/>
                                 </Frame.GestureRecognizers>
 
-                                <Grid Padding="0" 
-                           ColumnDefinitions="125,*">
-
-                                    <VerticalStackLayout Grid.Column="1"
-                                              Padding="10"
-                                              VerticalOptions="Center">
-                                        <Label Text="{Binding name}"/>
-                                        <Label Text="{Binding type}"/>
-
+                                <Grid Padding="0" ColumnDefinitions="125,*">
+                                    <VerticalStackLayout Grid.Column="1" Padding="10" VerticalOptions="Center">
+                                        <Label Text="{Binding name}" FontAttributes="Bold" FontSize="Medium"/>
+                                        <Label Text="{Binding difficulty}"/>
+                                        <Button Text="+" FontAttributes="Bold"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=AddExerciseToClientCommand}"
+                                            CommandParameter="{Binding .}" HorizontalOptions="End" VerticalOptions="Center" Padding="0" HeightRequest="25" WidthRequest="25" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>
@@ -55,18 +46,18 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        <Button Text=" Get Exercise" Grid.Row="1" Margin="8" Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=LoadExercisesCommand}"  IsEnabled="{Binding IsNotBusy}"/>
-    <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
+        </ScrollView>
+        
+
+        <StackLayout Grid.Row="2" Spacing="10">
+        
+            <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
                      ItemsSource="{Binding Path=FormattedMuscleList}" 
-                     SelectedItem="{Binding Path=Muscle}"
-                     />
-    
-                        
- <ActivityIndicator IsVisible="{Binding IsBusy}"
-                        IsRunning="{Binding IsBusy}"
-                        HorizontalOptions="FillAndExpand"
-                        VerticalOptions="CenterAndExpand"
-                        Grid.RowSpan="2"
-                        Grid.ColumnSpan="2"/>
-    </VerticalStackLayout>
+                     SelectedItem="{Binding Path=Muscle}" />
+
+            <ActivityIndicator Grid.RowSpan="2" Grid.ColumnSpan="2" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" 
+                               IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"/>
+        </StackLayout>
+    </Grid>
 </ContentPage>

@@ -11,4 +11,5 @@
     <ShellContent Route="RegistrationPage" ContentTemplate="{DataTemplate local:RegistrationPage}"/>
     <ShellContent Route="MainPage" Title="Main" ContentTemplate="{DataTemplate local:MainPage}"/>
     <ShellContent Route="ClientDetailsPage" Title="ClientDetails" ContentTemplate="{DataTemplate local:ClientDetailsPage}"/>
+    <ShellContent Route="ExerciseDetailsPage" Title="ExerciseDetails" ContentTemplate="{DataTemplate local:ExerciseDetailsPage}"/>
 </Shell>

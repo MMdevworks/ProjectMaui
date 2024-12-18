@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace ProjectMaui.ViewModels
 {
-    public partial class LoginViewModel : ObservableObject
+    public partial class LoginViewModel : BaseViewModel
     {
         private readonly SQLiteConnection dbconnection;
 

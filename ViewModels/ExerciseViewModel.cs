@@ -13,16 +13,14 @@ namespace ProjectMaui.ViewModels
         public ObservableCollection<Exercise> Exercises { get; } = new();
 
         IConnectivity connectivity;
+
         [ObservableProperty]
         private string muscle;
         public List<string> MuscleList { get; } = new List<string> { "abdominals", "abductors", "adductors", "biceps", "calves", "chest", "forearms", "glutes", "hamstrings", "lats", "lower_back", "middle_back", "neck", "quadriceps", "traps", "triceps" };
 
         public List<string> FormattedMuscleList
         {
-            get
-            {
-                return GetFormattedMuscleList();
-            }
+            get{return GetFormattedMuscleList();}
         }
         public List<string> GetFormattedMuscleList()
         {
@@ -32,7 +30,6 @@ namespace ProjectMaui.ViewModels
         // when an instance of ExerciseViewModel is created we will get objects of the injected services
         public ExerciseViewModel(ExerciseService exerciseService, IConnectivity connectivity)
         {
-            Title = "Exercise Title"; // from base view model
             this.exerciseService = exerciseService;
             this.connectivity = connectivity;
 
