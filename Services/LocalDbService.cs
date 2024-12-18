@@ -6,12 +6,13 @@ namespace ProjectMaui.Services
 {
     public class LocalDbService
     {
-        private const string DB_NAME = "clients_local_db.db3";
+        private const string DB_NAME = "clients_localdb.db3";
         private readonly SQLiteAsyncConnection connection;
         public LocalDbService() 
         { 
             connection = new SQLiteAsyncConnection(Path.Combine(FileSystem.AppDataDirectory, DB_NAME));
             connection.CreateTableAsync<Client>();
+            //connection.CreateTableAsync<Exercise>();
         }
         // todo try catch
         public async Task<List<Client>> GetClients()
@@ -37,5 +38,31 @@ namespace ProjectMaui.Services
         {
             await connection.DeleteAsync(client);
         }
+
+        //public async Task<List<Exercise>> GetExercises()
+        //{
+        //    return await connection.Table<Exercise>().ToListAsync();
+        //}
+
+        //public async Task<List<Exercise>> GetExercisesByClientId(int clientId)
+        //{
+        //    return await connection.Table<Exercise>().Where(x => x.clientId == clientId).ToListAsync();
+        //}
+
+        //public async Task AddExercise(Exercise exercise)
+        //{
+        //    await connection.InsertAsync(exercise);
+        //}
+
+        //public async Task UpdateExercise(Exercise exercise)
+        //{
+        //    await connection.UpdateAsync(exercise);
+        //}
+
+        //public async Task DeleteExercise(Exercise exercise)
+        //{
+        //    await connection.DeleteAsync(exercise);
+        //}
     }
 }
+

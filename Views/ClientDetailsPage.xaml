@@ -26,7 +26,7 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Exercise">
                         <Grid Padding="10">
-                            <Frame HeightRequest="125" Padding="0" InputTransparent="True">
+                            <Frame HeightRequest="125" Padding="0">
                                 <Frame.GestureRecognizers>
                                     <TapGestureRecognizer CommandParameter="{Binding .}"
                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=GoToDetailsCommand}"/>
@@ -34,8 +34,11 @@
 
                                 <Grid Padding="0" ColumnDefinitions="125,*">
                                     <VerticalStackLayout Grid.Column="1" Padding="10" VerticalOptions="Center">
-                                        <Label Text="{Binding name}"/>
-                                        <!--<Label Text="{Binding type}"/>-->
+                                        <Label Text="{Binding name}" FontAttributes="Bold" FontSize="Medium"/>
+                                        <Label Text="{Binding difficulty}"/>
+                                        <Button Text="+" FontAttributes="Bold"
+                                            Command="{Binding Source={RelativeSource AncestorType={x:Type viewModel:ExerciseViewModel}}, Path=AddExerciseToClientCommand}"
+                                            CommandParameter="{Binding .}" HorizontalOptions="End" VerticalOptions="Center" Padding="0" HeightRequest="25" WidthRequest="25" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>
@@ -45,7 +48,9 @@
             </CollectionView>
         </ScrollView>
         
+
         <StackLayout Grid.Row="2" Spacing="10">
+        
             <Picker Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Title="Select Muscle" 
                      ItemsSource="{Binding Path=FormattedMuscleList}" 
                      SelectedItem="{Binding Path=Muscle}" />

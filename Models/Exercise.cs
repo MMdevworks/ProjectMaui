@@ -1,7 +1,11 @@
-﻿namespace ProjectMaui.Models
+﻿using SQLite;
+
+namespace ProjectMaui.Models
 {
     public class Exercise
     {
+        [PrimaryKey, AutoIncrement]
+        public int clientId { get; set; }
         public string name { get; set; }
         public string type { get; set; }
         public string muscle { get; set; }

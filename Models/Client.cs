@@ -21,5 +21,8 @@ namespace ProjectMaui.Models
         public string Email {  get; set; }
         [Column("notes")]
         public string Notes { get; set; }
+        //[Column("exercises")]
+        //public List<Exercise> Exercises { get; set; }
+
     }
 }

@@ -91,7 +91,9 @@ namespace ProjectMaui.ViewModels
                         Name = Name,
                         Email = Email,
                         Mobile = Mobile,
-                        Notes = Notes
+                        Notes = Notes,
+                        //change list later
+                        //Exercises = new List<Exercise>()
                     });
                 }
                 else //add
@@ -101,7 +103,8 @@ namespace ProjectMaui.ViewModels
                         Name = Name,
                         Email = Email,
                         Mobile = Mobile,
-                        Notes = Notes
+                        Notes = Notes,
+                        //Exercises = new List<Exercise>()
                     });
                 }
 
@@ -146,7 +149,7 @@ namespace ProjectMaui.ViewModels
                 Name = client.Name;
                 Email = client.Email;
                 Mobile = client.Mobile;
-                Notes = client.Notes;
+                Notes = client.Notes;             
             }
         }
 
